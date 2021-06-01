@@ -33,7 +33,7 @@ jobs:
 
       - name: Write GITHUB_ENV
         run: |
-          echo "data='Some Data'" >> $GITHUB_ENV
+          echo "data='Some Data'" >> $env:GITHUB_ENV
         shell: pwsh
 
       # Runs a set of commands using the runners shell
