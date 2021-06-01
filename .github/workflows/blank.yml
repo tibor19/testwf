@@ -19,32 +19,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: echo GITHUB_ENV
-        run: |
-          echo GITHUB_ENV
-          echo $GITHUB_ENV
-        shell: pwsh
-
-      - name: echo env:GITHUB_ENV
-        run: |
-          echo $env:GITHUB_ENV
-        shell: pwsh
-
       - name: Write GITHUB_ENV
         run: |
           echo "data='Some Data'" >> $env:GITHUB_ENV
         shell: pwsh
 
-      # Runs a set of commands using the runners shell
-      - name: Echo data
-        run: |
-          echo $data
-        shell: pwsh
-      # Runs a set of commands using the runners shell
-
       - name: Echo env:data
         run: |
-          echo $env:data
+          dir $env:
+          echo ${{ secrets['JSON'].a }}
         shell: pwsh
+        env:
+          data: 'Default value'
 
