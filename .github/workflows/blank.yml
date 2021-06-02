@@ -27,7 +27,7 @@ jobs:
         run: |
           "data=Some Data" | Out-File -Append -FilePath $env:GITHUB_ENV
           "secretdata='$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)'" | Out-File -Append -FilePath $env:GITHUB_ENV
-          echo "::set-env envdata='$((echo ""${{ env.secret }}"" | ConvertFrom-Json).a)'"
+          echo "::set-env name=envdata='$((echo ""${{ env.secret }}"" | ConvertFrom-Json).a)'"
         shell: pwsh
         env:
           secret: ${{ secrets.JSON }}
