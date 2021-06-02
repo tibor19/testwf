@@ -19,14 +19,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Check out the code
-        uses: actions/checkout@v2
+      # - name: Check out the code
+      #   uses: actions/checkout@v2
+          # "justsecret='$(echo ${{ env.secret }})'" | Out-File -Append -FilePath $env:GITHUB_ENV
 
       - name: Create GitHub Variable
         run: |
-          # "justsecret='$(echo ${{ env.secret }})'" | Out-File -Append -FilePath $env:GITHUB_ENV
           "data=Some Data" | Out-File -Append -FilePath $env:GITHUB_ENV
-          "secretdata='$((echo ${{ env.secret }} | ConvertFrom-Json).a)'" | Out-File -Append -FilePath $env:GITHUB_ENV
+          "secretdata='$((echo ""${{ env.secret }}"" | ConvertFrom-Json).a)'" | Out-File -Append -FilePath $env:GITHUB_ENV
         shell: pwsh
         env:
           secret: ${{ secrets.JSON }}
