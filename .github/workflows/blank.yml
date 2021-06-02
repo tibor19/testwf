@@ -24,7 +24,7 @@ jobs:
           # "justsecret='$(echo ${{ env.secret }})'" | Out-File -Append -FilePath $env:GITHUB_ENV
 
       - name: Create GitHub Variable
-        id: set-vars
+        id: setvars
         run: |
           "data=Some Data" | Out-File -Encoding utf8 -Append -FilePath $env:GITHUB_ENV
           "secretdata='$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)'" | Out-File -Encoding utf8 -Append -FilePath $env:GITHUB_ENV
@@ -41,7 +41,7 @@ jobs:
 
       - name: Echo outputs
         run: |
-          Write-Output "Data: ${{ steps.set-vars.outputs.data }}"
-          Write-Output "Secret: ${{ steps.set-vars.outputs.secret }}"
-          Write-Output "Code: ${{ steps.set-vars.outputs.code }}"
+          Write-Output "Data: ${{ steps.setvars.outputs.data }}"
+          Write-Output "Secret: ${{ steps.setvars.outputs.secret }}"
+          Write-Output "Code: ${{ steps.setvars.outputs.code }}"
         shell: pwsh
