@@ -41,7 +41,7 @@ jobs:
 
       - name: Echo outputs
         run: |
-          Write-Output "Data: ${{ steps.set-vars.output.data }}"
-          Write-Output "Secret: ${{ steps.set-vars.output.secret }}"
-          Write-Output "Code: ${{ steps.set-vars.output.code }}"
+          Write-Output "Data: ${{ steps.set-vars.outputs.data }}"
+          Write-Output "Secret: ${{ steps.set-vars.outputs.secret }}"
+          Write-Output "Code: ${{ steps.set-vars.outputs.code }}"
         shell: pwsh
