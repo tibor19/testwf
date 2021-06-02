@@ -27,7 +27,7 @@ jobs:
       - name: Echo env:data
         run: |
           dir env:
-          jq "${{ secrets.JSON }}" .a
+          echo "${{ secrets.JSON }}" | jq .a
         shell: pwsh
         env:
           data: 'Default value'
