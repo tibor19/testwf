@@ -22,7 +22,8 @@ jobs:
       - name: Write GITHUB_ENV
         run: |
           "secretdata='$(ConvertFrom-Json ""{'foo': 0 }"" | Select -ExpandProperty foo)'" | Out-File -Append -FilePath $env:GITHUB_ENV
-          "envsecret='$(echo $secret)'" | Out-File -Append -FilePath $env:GITHUB_ENV
+          "outsecret='$(Write-Output $secret)'" | Out-File -Append -FilePath $env:GITHUB_ENV
+          "hostsecret='$(Write-Host $secret)'" | Out-File -Append -FilePath $env:GITHUB_ENV
           "data=Some Data" | Out-File -Append -FilePath $env:GITHUB_ENV
         shell: pwsh
         env:
@@ -30,7 +31,7 @@ jobs:
 
       - name: Echo env:data
         run: |
-          echo $data
-          echo $envsecret
+          Write-Output "Out: $data"
+          Write-Host "Host: $data"
         shell: pwsh
 
