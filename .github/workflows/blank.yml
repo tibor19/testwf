@@ -26,12 +26,13 @@ jobs:
       - name: Create GitHub Variable
         id: set-vars
         run: |
-          "data=Some Data" | Out-File -Append -FilePath $env:GITHUB_ENV
-          "secretdata='$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)'" | Out-File -Append -FilePath $env:GITHUB_ENV
+          "data=Some Data" | Out-File -Encoding utf8 -Append -FilePath $env:GITHUB_ENV
+          "secretdata='$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)'" | Out-File -Encoding utf8 -Append -FilePath $env:GITHUB_ENV
           echo "::set-env name=envdata::'$((echo ""${{ env.secret }}"" | ConvertFrom-Json).a)'"
         shell: pwsh
         env:
-          secret: ${{ secrets.JSON }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+          
 
       - name: Echo env:data
         run: |
