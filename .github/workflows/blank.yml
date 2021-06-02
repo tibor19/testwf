@@ -31,8 +31,6 @@ jobs:
         shell: pwsh
         env:
           secret: ${{ secrets.JSON }}
-        output:
-
 
       - name: Echo env:data
         run: |
