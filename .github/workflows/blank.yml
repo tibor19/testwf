@@ -15,6 +15,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    outputs:
+      data: ${{ steps.setvars.outputs.data }}
+      code: ${{ steps.setvars.outputs.code }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -45,3 +48,13 @@ jobs:
           Write-Output "Secret: ${{ steps.setvars.outputs.secret }}"
           Write-Output "Code: ${{ steps.setvars.outputs.code }}"
         shell: pwsh
+  test:
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show Output
+        run: | 
+          Write-Output "Data: ${{ needs.build.outputs.data }}"
+          Write-Output "Code: ${{ needs.build.outputs.code }}"
