@@ -22,8 +22,8 @@ jobs:
       - name: Write GITHUB_ENV
         run: |
           echo "data='Some Data'" >> $env:GITHUB_ENV
-          echo "secretdata=$(jq $secret .a)" >> $env:GITHUB_ENV
-          echo "envsecret=$secret" >> $env:GITHUB_ENV
+          echo "secretdata='$(jq $secret .a)'" >> $env:GITHUB_ENV
+          echo "envsecret='$secret'" >> $env:GITHUB_ENV
         shell: pwsh
         env:
           secret: ${{ secrets.JSON }}
