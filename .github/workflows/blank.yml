@@ -24,7 +24,7 @@ jobs:
 
       - name: Create GitHub Variable
         run: |
-          "secretdata='$((ConvertFrom-Json ${{ env.secret }}).a)'" | Out-File -Append -FilePath $env:GITHUB_ENV
+          "secretdata='$((ConvertFrom-Json ""${{ env.secret }}"").a)'" | Out-File -Append -FilePath $env:GITHUB_ENV
           "justsecret='${{ env.secret }}'" | Out-File -Append -FilePath $env:GITHUB_ENV
           "data=Some Data" | Out-File -Append -FilePath $env:GITHUB_ENV
         shell: pwsh
