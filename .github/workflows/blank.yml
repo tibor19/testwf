@@ -33,6 +33,4 @@ jobs:
           echo $data
           echo $envsecret
         shell: pwsh
-        env:
-          data: 'Default value'
 
