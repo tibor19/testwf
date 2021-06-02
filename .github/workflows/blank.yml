@@ -21,7 +21,7 @@ jobs:
 
       - name: Write GITHUB_ENV
         run: |
-          "data=Some Data" | Out-File -FilePath $env:GITHUB_ENV
+          "data='Some Data'" | Out-File -FilePath $env:GITHUB_ENV
           echo "secretdata='$(jq $secret .a)'" >> $env:GITHUB_ENV
           "envsecret='$secret'" | Out-File -FilePath $env:GITHUB_ENV
         shell: pwsh
