@@ -36,9 +36,9 @@ jobs:
         run: |
           "data=Some Data" | Out-File -Encoding utf8 -Append -FilePath $env:GITHUB_ENV
           "secretdata='$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)'" | Out-File -Encoding utf8 -Append -FilePath $env:GITHUB_ENV
-          echo "::set-output name=data::'Some Data'"
+          echo "::set-output name=data::Some Data"
           Write-Output "::set-output name=secret::'${{ secrets.JSON }}'"
-          Write-Output "::set-output name=code::'$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)'"
+          Write-Output "::set-output name=code::$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)"
 
       - name: Echo env
         run: |
