@@ -45,7 +45,7 @@ jobs:
       - name: Echo env
         run: |
           Write-Output "Out: ${{ env.secretdata }}"
-          Write-Output "Out: ${{ fromJSON(steps.setvars.outputs.secret).a }} "
+          Write-Output "Out: ${{ fsteps.setvars.outputs.secret }} "
 
       - name: Echo outputs
         run: |
