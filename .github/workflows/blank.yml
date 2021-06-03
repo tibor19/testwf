@@ -40,14 +40,14 @@ jobs:
           echo "fromJSON: ${{ fromJSON(secrets.JSON) }} "
           echo "::set-output name=data::Some Data"
           Write-Output "::set-output name=normal::${{ secrets.JSON }}"
-          Write-Output "::set-output name=quotted::'${{ secrets.JSON }}'"
+          Write-Output "::set-output name=quotted::""${{ secrets.JSON }}"""
           Write-Output "::set-output name=code::$((echo ""${{ secrets.JSON }}"" | ConvertFrom-Json).a)"
 
       - name: Echo env
         run: |
           Write-Output "Out: ${{ env.secretdata }}"
           Write-Output "Out: ${{ steps.setvars.outputs.normal }} "
-          Write-Output "Out: ${{ fromJSON(steps.setvars.outputs.quotted).a }} "
+          Write-Output "Out: ${{ fromJSON(steps.setvars.outputs.quotted) }} "
 
       - name: Echo outputs
         run: |
